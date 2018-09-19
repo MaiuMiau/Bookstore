@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
 
 @Entity // tästä pitää luoda tietokantaan taulu saa nimen suoraan luokasta
 public class Book {
@@ -15,6 +19,10 @@ public class Book {
 	private long year;
 	private long isbn;
 	private double price;
+	
+	 @ManyToOne
+	    @JoinColumn(name = "categoryid")
+	    private Category category;
 
 	public Book() {} //ei voi laittaa jos on parametriton konsturktori, esimerkeissä ei sitä ole
 
@@ -32,13 +40,14 @@ public class Book {
 	}*/
 
 	// parametrillinen konstruktori
-	public Book(String bookTitle, String author, long year, long isbn, double price) {
+	public Book(String bookTitle, String author, long year, long isbn, double price, Category category) {
 		super();
 		this.bookTitle = bookTitle;
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
 		this.price = price;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -88,11 +97,25 @@ public class Book {
 	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
+	
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	@Override
 	public String toString() {
+		if (this.category != null)
 		return "Book [id=" + id + ", bookTitle=" + bookTitle + ", author=" + author + ", year=" + year + ", isbn="
-				+ isbn + ", price=" + price + "]";
+				+ isbn + ", price=" + price + ", category=" +  this.getCategory() + "]";
+		else return "Book [id=" + id + ", bookTitle=" + bookTitle + ", author=" + author + ", year=" + year + ", isbn="
+		+ isbn + ", price=" + price +  "]";
 	}
+	
 
+	
 }
