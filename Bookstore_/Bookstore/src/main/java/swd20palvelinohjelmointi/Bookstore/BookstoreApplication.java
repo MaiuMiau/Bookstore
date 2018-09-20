@@ -36,7 +36,7 @@ public class BookstoreApplication {
 			repository.save(new Book("Kesäkirja ", "Tove Jansson",  2018, 97895189, 14.85, crepository.findByCateName("Seikkailu").get(0)));	
 			repository.save(new Book("Brunon keittiössä", "Bruno Lösönen",  2009, 978679, 19.85,crepository.findByCateName("Ruuanlaitto").get(0)));
 			
-			log.info("fetch all students");
+			log.info("fetch all books");
 			for (Book book: repository.findAll()) {
 				log.info(book.toString());
 			}
