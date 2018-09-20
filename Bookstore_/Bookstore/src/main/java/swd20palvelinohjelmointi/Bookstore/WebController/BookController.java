@@ -28,7 +28,7 @@ public class BookController {
 	        model.addAttribute("books", bookRepository.findAll());
 	        return "booklist";
 	    }
-	 /** returns a form for adding books **/
+	 /** returns a empty form for adding books **/
 	 @RequestMapping(value = "/add")
 	    public String addBook(Model model){
 	    	model.addAttribute("book", new Book());
