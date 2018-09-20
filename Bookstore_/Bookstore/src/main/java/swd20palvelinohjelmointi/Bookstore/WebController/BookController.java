@@ -15,46 +15,48 @@ import swd20palvelinohjelmointi.Bookstore.Domain.CategoryRepository;
 @Controller
 public class BookController {
 	
+	/**  tuodaan bookRepository controllerin käyttöön**/
 	@Autowired
-	private BookRepository repository;
-	
+	private BookRepository bookRepository;
+	/**  tuodaan categoryRepository controllerin käyttöön**/
 	@Autowired
-	private CategoryRepository crepository;
+	private CategoryRepository categoryRepository;
 	
+	/** returns a list of books **/
 	 @RequestMapping(value="/booklist")
 	    public String bookList(Model model) {	
-	        model.addAttribute("books", repository.findAll());// modelin kautta palauttaa listan kirjoista
+	        model.addAttribute("books", bookRepository.findAll());
 	        return "booklist";
 	    }
-	 
+	 /** returns a form for adding books **/
 	 @RequestMapping(value = "/add")
 	    public String addBook(Model model){
 	    	model.addAttribute("book", new Book());
-	    	model.addAttribute("categoryes", crepository.findAll());
+	    	model.addAttribute("categoryes", categoryRepository.findAll());
 	    	
 	        return "addbook";
 	    }    
-	 
+	 /** saves the book that was posted from the bookform **/
 	 @RequestMapping(value = "/save", method = RequestMethod.POST)
 	    public String save(Book book){
-	        repository.save(book);
+	        bookRepository.save(book);
 	        return "redirect:booklist"; // ettei tulisi selaimen virkistyksen jälkeen tahttomia uudelleen postauksia
 	    }  
-	 
+	 /** daletes a book based on id **/
 	 @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	    public String deleteBook(@PathVariable("id") Long bookId, Model model) {
-	    	repository.deleteById(bookId);
-	        return "redirect:../booklist"; // .. tarkoittaa ett siirrytään urlissa
+	    	bookRepository.deleteById(bookId);
+	        return "redirect:../booklist"; 
 	    }    
-	
+	 /** edits a book based on id **/
 	 @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	 public String editBook(@PathVariable("id") Long bookId,/* @PathVariable("cateName") String cateName,*/ Model model){
-	 model.addAttribute("book", repository.findById(bookId));
-	 model.addAttribute("categoryes", crepository.findAll());
-	// model.addAttribute("category", crepository.findByCateName(cateName));
+	 public String editBook(@PathVariable("id") Long bookId, Model model){
+	 model.addAttribute("book", bookRepository.findById(bookId));
+	 model.addAttribute("categoryes", categoryRepository.findAll());
+	
 	 return "editbook";
 	 }
 	
 	
-	//git kokeilu kommentti
+	
 }

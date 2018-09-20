@@ -24,20 +24,9 @@ public class Book {
 	    @JoinColumn(name = "categoryid")
 	    private Category category;
 
-	public Book() {} //ei voi laittaa jos on parametriton konsturktori, esimerkeissä ei sitä ole
+	public Book() {} 
 
-	// parametriton konstruktori, alustaa olion atribuutin arvot nulliksi ja
-	// nolliksi
 	
-	/*public Book() {
-		super();
-
-		this.bookTitle = "";
-		this.author = "";
-		this.year = 0;
-		this.isbn = 0;
-		this.price = 0;
-	}*/
 
 	// parametrillinen konstruktori
 	public Book(String bookTitle, String author, long year, long isbn, double price, Category category) {
