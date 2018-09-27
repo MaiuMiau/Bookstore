@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 import swd20palvelinohjelmointi.Bookstore.Domain.Book;
 import swd20palvelinohjelmointi.Bookstore.Domain.BookRepository;
@@ -43,7 +43,13 @@ public class BookController {
 	    @RequestMapping(value="/book/{id}", method = RequestMethod.GET)
 	    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {	
 	    	return bookRepository.findById(bookId);
-	    }   
+	    }  
+	    
+	    @RequestMapping(value="/books", method =  RequestMethod.POST )// REST metodi joka lisää JSONnina saadun kirjan tietokantaan.ur
+	    public @ResponseBody Book saveNewBook(@RequestBody Book book){
+	    	bookRepository.save(book);
+	    	return book;
+	    }
 	    
 	 /** returns a empty form for adding books **/
 	 @RequestMapping(value = "/add")
