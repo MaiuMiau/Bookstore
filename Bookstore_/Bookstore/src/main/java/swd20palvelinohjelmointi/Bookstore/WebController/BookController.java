@@ -45,6 +45,7 @@ public class BookController {
 	    	return bookRepository.findById(bookId);
 	    }  
 	    
+	    /** RESTful service to add book **/
 	    @RequestMapping(value="/books", method =  RequestMethod.POST )// REST metodi joka lisää JSONnina saadun kirjan tietokantaan.ur
 	    public @ResponseBody Book saveNewBook(@RequestBody Book book){
 	    	bookRepository.save(book);
