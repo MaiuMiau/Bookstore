@@ -10,20 +10,21 @@ import javax.persistence.Id;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	 @Column(name = "id", nullable = false, updatable = false)
+	 @Column(name = "id", nullable = false, updatable = false)// ei saa olla tyhjä
     private Long id;
 	
 	 // Username with unique constraint
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true)// pitää olla uniikki
     private String username;
 
     @Column(name = "password", nullable = false)
-    private String passwordHash;
+    private String passwordHash;// salasant on cryptattu
     
     @Column(name = "email", nullable = false)
     private String email;
+    
 
-    @Column(name = "role", nullable = false)
+    @Column(name = "role", nullable = false)// rooli ei saa olla tyhjä
     private String role;
     
     public User() {
@@ -36,6 +37,8 @@ public class User {
 		this.email = email;
 		this.role = role;
 	}
+
+	
 
 	public String getEmail() {
 		return email;

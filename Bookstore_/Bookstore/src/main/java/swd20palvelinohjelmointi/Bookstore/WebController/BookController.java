@@ -26,6 +26,8 @@ public class BookController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	 //palauttaa tyhjän login lomakkeen(GET)
+    // springalusta käsittelee loginin POST kun joku kirjautuu sisään
 	/** login form **/
     @RequestMapping(value="/login")
     public String login() {	
