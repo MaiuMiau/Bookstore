@@ -38,7 +38,7 @@ public class BookstoreApplication {
 			repository.save(new Book("Kesäkirja ", "Tove Jansson",  2018, 97895189, 14.85, crepository.findByCateName("Seikkailu").get(0)));	
 			repository.save(new Book("Brunon keittiössä", "Bruno Lösönen",  2009, 978679, 19.85,crepository.findByCateName("Ruuanlaitto").get(0)));
 			
-			// Create users: admin/nurmi user/nieminen
+			// Create users: admin/nurmi mikko/nieminen
 						User user1 = new User("mikko", "$2a$10$CMcOTHrSE0uuk8wiOoFV.OltHTniVbtR96Kjl7gYQ3i/AXqfcXKHm","kisu@kisu.com", "USER");
 						User user2 = new User("admin", "$2a$10$XajKI4SNSd8OfsewNtiv6.ivdfQybq3JAtA0PwDQ6M7ABe/yEveJS","admin@admin.com", "ADMIN");
 						userrepository.save(user1);

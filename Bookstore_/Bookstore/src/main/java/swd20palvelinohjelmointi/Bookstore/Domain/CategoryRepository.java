@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface CategoryRepository extends CrudRepository<Category, Long>{
-	
+	List<Category> findAll();
 	 List<Category> findByCateName(@Param(value="cateName")String cateName);
 
 	 //http://localhost:8080/api/categories/search/findByCateName?catename=Draama
