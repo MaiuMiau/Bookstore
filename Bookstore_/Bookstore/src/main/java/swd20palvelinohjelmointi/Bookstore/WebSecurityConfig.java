@@ -24,6 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	        .authorizeRequests().antMatchers("/css/**").permitAll() // Enable css when logged out
 	        .and()
 	        .authorizeRequests()
+	        .antMatchers( "/").permitAll()
 	        . antMatchers ("/delete/**", "/edit/**" ).hasAuthority("ADMIN") // vain admin voi poistaa tai editoida
 	          .anyRequest().authenticated() // millekään sivulle ei pääse ilman kirjautumista
 	          .and()

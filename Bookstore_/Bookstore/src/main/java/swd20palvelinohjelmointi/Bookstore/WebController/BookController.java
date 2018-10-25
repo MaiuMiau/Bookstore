@@ -33,6 +33,12 @@ public class BookController {
     public String login() {	
         return "login";
     }	
+    
+    /** "/" **/
+    @RequestMapping(value="/")
+    public String testi() {	
+        return "login";
+    }	
 	
 	/** returns a list of books **/
 	 @RequestMapping(value="/booklist")
